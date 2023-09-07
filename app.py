@@ -13,8 +13,13 @@ DB_NAME =  os.environ.get("DB_NAME")
 client = MongoClient(MONGODB_URI)
 db = client[DB_NAME]
 
-# Tambahkan collection baru
-db.create_collection('linktree')
+# Check if collection already exists
+if 'linktree' in db.list_collection_names():
+    # Collection already exists, do nothing
+    print('Collection linktree already exists')
+else:
+    # Collection does not exist, create it
+    db.create_collection('linktree')
 
 app = Flask(__name__)
 
