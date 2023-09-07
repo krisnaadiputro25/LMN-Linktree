@@ -1,0 +1,35 @@
+#logo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  }
+  #buttona {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: auto;
+    width: auto;
+  }
+
+  #buttonb {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: auto;
+    width: auto;
+  }
+  
+  #footer {
+    margin-top: auto;
+    background-color: darkmagenta;
+  }
+
+  #content {
+    padding: 5rem 1rem;
+    background-color: darkviolet;
+  }
+
+  #icons {
+    color: white;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
