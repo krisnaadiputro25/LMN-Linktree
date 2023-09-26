@@ -21,29 +21,29 @@ else:
     # Collection does not exist, create it
     db.create_collection('linktree')
 
+# Check if logo lmn.jpg already exists in MongoDB
+if db.linktree.find_one({'logo': 'logo lmn.jpg'}) is None:
+    # Logo does not exist in MongoDB, save it
+    with open('static/logo lmn.jpg', 'rb') as f:
+        image_data = f.read()
+
+    db.linktree.insert_one({'logo': 'logo lmn.jpg', 'image_data': image_data})
+
 app = Flask(__name__)
+
+# Cache logo data in memory
+logo_data = None
 
 @app.route('/')
 def home():
-   return render_template('index.html')
 
-# Add code to save the logo file to MongoDB
+    global logo_data
+    if logo_data is None:
+        # Get logo from MongoDB
+        logo_data = db.linktree.find_one({'logo': 'logo lmn.jpg'})['image_data']
 
-# Get the collection
-collection = db['linktree']
-
-# Insert the logo file into the collection
-logo_file = open('static/logo lmn.jpg', 'rb')
-logo_data = logo_file.read()
-
-document = {
-    'logo': logo_data
-}
-
-collection.insert_one(document)
-
-# Add code to save the Linktree images to MongoDB
-
+    # Return rendered template with logo data
+    return render_template('index.html', logo_data=logo_data)
 
 if __name__ == '__main__':
     #DEBUG is SET to TRUE. CHANGE FOR PROD
