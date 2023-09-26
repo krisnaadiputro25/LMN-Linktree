@@ -1,9 +1,27 @@
-
-  .jumbotron,
-  .support {
-    height: 80vh;
+  :root {
+    --gradient: linear-gradient( 58.2deg,  rgba(40,91,212,0.73) -3%, rgba(171,53,163,0.45) 49.3%, rgba(255,204,112,0.37) 97.7% );
   }
+  body {
+    height: 100vh;
+    background-color: aliceblue;
+    background-image: var(--gradient);
+    background-size: 500%;
+    animation: animate-bg 15s infinite alternate;
+    background-position: right;
+  }
+  @keyframes animate-bg {
+    0% {
+      background-position: right;
+    }
+    
+    100% {
+       background-position: left;
 
+     }
+  }
+  #jumbotron {
+    padding-top: 5rem;
+  }
   #buttona {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -18,18 +36,13 @@
     width: auto;
   }
   
-  #footer {
-    margin-top: auto;
-    background-color: darkmagenta;
-  }
-
   #icons {
     color: white;
     margin-left: 0;
     margin-right: 0;
   }
 
- 
+
   #buttons {
     position: relative;
     top: 50%;
@@ -37,31 +50,4 @@
     left: 0;
     transform: translateX(0%);
   }
-
-
-  .support {
-  background-color: #ff69b4; 
- }
  
- .jumbotron {
-  padding-top: 5rem;
-  background-color: #9400d3;
- }
-
- #wave {
-  position: fixed;
-  top: 0;
-  transform: translateY(0%);
-  left: 0;
-  transform: translateX(0%);
-  padding-top: 5rem;
-}
-
-#carousel {
-  position: relative; top: 0; left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  left: 0;
-  transform: translateX(0%);
-}
-
